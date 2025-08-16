@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>YuvaShrishti Arts Registration form</title>
+    <link rel="stylesheet" type="text/css" href="style.css"> 
+
+    <!-- Add icon library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+ 
+<body>
+<h1 style="color: black;">Arts Registration Form</h1>
+
+
+<form name="google-sheet">
+    <div class="outerbox">
+        <div class="ficon">
+            <i class="fa fa-user-circle" aria-hidden="true"></i>
+        </div>
+
+        <div class="fouterbox">
+            <div class="main">
+                <div class="left">
+                    <input type="text" name="fname" placeholder="Name" required>
+                    <select name="participatingitem" id="participatingitem" required>
+                        <option value="">Participating Item</option>
+                        <option value="Music">Music</option>
+                        <option value="Dance">Dance</option> 
+                        <option value="Instruments">Instruments</option> 
+                        <option value="Others">Others</option> 
+                    </select>
+                    <input type="email" name="email" placeholder="Email" required>
+                    <input type="text" name="mobile" maxlength="10" onkeypress="return event.charCode>=48 && event.charCode<=57" placeholder="Mobile no(enter in digits only)" required>
+
+                    Male<input type="radio" name="gender" value="Male" required>
+                    Female<input type="radio" name="gender" value="Female" required>
+                    <input type="submit" name="submit" class="submit" style="border-radius: 20px;">   
+                    </div>
+
+            
+                <div class="right">
+                    <select name="agecategory" id="agecategory" required>
+                        <option value="">Age Category</option>
+                        <option value="Sub-Junior">Sub-Junior</option>
+                        <option value="Junior">Junior</option> 
+                        <option value="Senior">Senior</option> 
+                    </select>
+                    <select name="clubmember" id="clubmember" required>
+                        <option value="">Club Member</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                    <textarea name="address" placeholder="Address" required></textarea>
+
+                    <input type="reset" name="" class="reset" style="border-radius: 20px;">
+                </div>
+            </div> 
+        </div>
+    </div>
+</form>
+
+<script>
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbw9Q0GiQ7cTdIrzQHTp_GzoTFjIbYMamu_HilcSKylYqheY0t9bZik-jxbPoOQBadQUPw/exec'
+            const form = document.forms['google-sheet']
+          
+            form.addEventListener('submit', e => {
+              e.preventDefault()
+              fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => alert("Thanks for Contacting us..! We Will Contact You Soon..."))
+                .catch(error => console.error('Error!', error.message))
+            })
+          </script>
+
+</body>
+
+</html>    
